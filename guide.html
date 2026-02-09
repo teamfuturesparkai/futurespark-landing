@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your First AI Family Weekend — FutureSpark AI Starter Guide</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========== CSS CUSTOM PROPERTIES ========== */
+    :root {
+      --deep-navy: #1A1A2E;
+      --forest-green: #2D6A4F;
+      --warm-coral: #E07A5F;
+      --warm-gold: #D4A537;
+      --teal: #3D8487;
+      --warm-cream: #FAF3E8;
+      --soft-white: #FFFFFF;
+      --light-sage: #E8F0E8;
+      --body-text: #333333;
+      --light-gray: #F5F5F5;
+    }
+
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.6;
+      color: var(--body-text);
+      background-color: #e0e0e0;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--deep-navy);
+    }
+
+    /* ========== PRINT PAGE SETUP ========== */
+    @page {
+      size: letter;
+      margin: 0;
+    }
+
+    /* ========== PAGE STRUCTURE ========== */
+    .page {
+      width: 8.5in;
+      height: 11in;
+      margin: 24px auto;
+      padding: 0.6in 0.75in 0.45in;
+      background: var(--soft-white);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-body {
+      flex: 1;
+    }
+
+    /* ========== PAGE FOOTER (in normal flow) ========== */
+    .page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.5pt;
+      color: #aaa;
+      border-top: 1px solid #e5e5e5;
+      padding-top: 8px;
+      margin-top: auto;
+    }
+
+    .page-footer .brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--deep-navy);
+      font-size: 8pt;
+    }
+
+    .page-footer .brand .sparkle {
+      color: var(--warm-gold);
+    }
+
+    /* ================================================================
+       COVER PAGE
+       ================================================================ */
+    .cover {
+      text-align: center;
+      background: linear-gradient(170deg, var(--warm-cream) 0%, var(--soft-white) 50%, var(--light-sage) 100%);
+    }
+
+    .cover .page-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover-sparkle-row {
+      font-size: 1.2rem;
+      letter-spacing: 12px;
+      color: var(--warm-gold);
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .cover-brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 12pt;
+      color: var(--forest-green);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .cover-brand .sparkle {
+      color: var(--warm-gold);
+    }
+
+    .cover h1 {
+      font-size: 30pt;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--deep-navy);
+      margin-bottom: 10px;
+    }
+
+    .cover .subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13pt;
+      font-weight: 600;
+      color: var(--warm-coral);
+      margin-bottom: 28px;
+    }
+
+    .cover .tagline {
+      font-size: 10.5pt;
+      max-width: 4.8in;
+      color: var(--body-text);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .cover .tagline strong {
+      color: var(--deep-navy);
+    }
+
+    .cover-checklist {
+      text-align: left;
+      background-color: var(--soft-white);
+      border: 2px solid var(--light-sage);
+      border-radius: 10px;
+      padding: 20px 28px;
+      max-width: 4.6in;
+      width: 100%;
+    }
+
+    .cover-checklist h3 {
+      font-size: 9pt;
+      color: var(--forest-green);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .cover-checklist ul {
+      list-style: none;
+    }
+
+    .cover-checklist li {
+      padding: 3px 0;
+      font-size: 10pt;
+      color: var(--body-text);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .cover-checklist li::before {
+      content: '\2713';
+      color: var(--forest-green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .cover-footer {
+      text-align: center;
+      font-size: 8.5pt;
+      color: #aaa;
+      padding-top: 8px;
+      border-top: 1px solid #e5e5e5;
+      margin-top: auto;
+    }
+
+    .cover-footer a {
+      color: var(--forest-green);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ================================================================
+       INTERIOR — SHARED STYLES
+       ================================================================ */
+    .page-title {
+      font-size: 18pt;
+      font-weight: 700;
+      color: var(--deep-navy);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .page-title-accent {
+      display: block;
+      width: 44px;
+      height: 3.5px;
+      background-color: var(--warm-coral);
+      border-radius: 2px;
+      margin: 8px 0 18px;
+    }
+
+    .section-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--forest-green);
+      margin-bottom: 6px;
+    }
+
+    /* ================================================================
+       PAGE 2 — WELCOME + WHAT IS AI
+       ================================================================ */
+    .welcome-letter {
+      background-color: var(--warm-cream);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 20px;
+      font-size: 9.5pt;
+      line-height: 1.65;
+    }
+
+    .welcome-letter p {
+      margin-bottom: 8px;
+    }
+
+    .welcome-letter p:last-child {
+      margin-bottom: 0;
+    }
+
+    .welcome-letter .punchline {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--warm-coral);
+      font-size: 12pt;
+      margin: 12px 0;
+    }
+
+    .welcome-letter .signature {
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-top: 10px;
+    }
+
+    .ai-callout {
+      background-color: var(--light-sage);
+      border-left: 4px solid var(--forest-green);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      font-size: 9.5pt;
+      line-height: 1.65;
+    }
+
+    .ai-lists {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .ai-list-col {
+      flex: 1;
+      background-color: var(--warm-cream);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .ai-list-col h4 {
+      font-size: 9pt;
+      margin-bottom: 6px;
+    }
+
+    .ai-list-col.can h4 { color: var(--forest-green); }
+    .ai-list-col.cant h4 { color: var(--warm-coral); }
+
+    .ai-list-col ul {
+      list-style: none;
+      font-size: 8.5pt;
+    }
+
+    .ai-list-col li {
+      padding: 2px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .ai-list-col.can li::before {
+      content: '\2713';
+      position: absolute;
+      left: 0;
+      color: var(--forest-green);
+      font-weight: 700;
+    }
+
+    .ai-list-col.cant li::before {
+      content: '\2717';
+      position: absolute;
+      left: 0;
+      color: var(--warm-coral);
+      font-weight: 700;
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--warm-gold);
+      padding: 10px 16px;
+      font-style: italic;
+      color: var(--deep-navy);
+      font-size: 9.5pt;
+      background-color: rgba(212, 165, 55, 0.08);
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* ================================================================
+       PAGE 3 — TOOLS
+       ================================================================ */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .tool-card {
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 16px;
+      background-color: var(--soft-white);
+    }
+
+    .tool-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .tool-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 10pt;
+      color: var(--soft-white);
+      flex-shrink: 0;
+    }
+
+    .tool-card:nth-child(1) .tool-number { background-color: var(--forest-green); }
+    .tool-card:nth-child(2) .tool-number { background-color: var(--warm-coral); }
+    .tool-card:nth-child(3) .tool-number { background-color: var(--warm-gold); }
+    .tool-card:nth-child(4) .tool-number { background-color: var(--teal); }
+
+    .tool-card h3 {
+      font-size: 11pt;
+      color: var(--deep-navy);
+    }
+
+    .tool-meta {
+      font-size: 7.5pt;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .tool-card > p {
+      font-size: 8.5pt;
+      margin-bottom: 8px;
+      line-height: 1.55;
+    }
+
+    .tool-try {
+      background-color: var(--warm-cream);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 8.5pt;
+      line-height: 1.5;
+    }
+
+    .tool-try strong {
+      color: var(--forest-green);
+    }
+
+    .tool-link {
+      display: block;
+      margin-top: 6px;
+      font-size: 8pt;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    /* ================================================================
+       ACTIVITIES
+       ================================================================ */
+    .activity-card {
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      background-color: var(--soft-white);
+      border: 1.5px solid #e0e0e0;
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .activity-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      border-radius: 10px 0 0 10px;
+    }
+
+    .activity-card.gold::before { background-color: var(--warm-gold); }
+    .activity-card.coral::before { background-color: var(--warm-coral); }
+    .activity-card.teal::before { background-color: var(--teal); }
+    .activity-card.green::before { background-color: var(--forest-green); }
+
+    .activity-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .activity-number {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .activity-card.gold .activity-number { color: var(--warm-gold); }
+    .activity-card.coral .activity-number { color: var(--warm-coral); }
+    .activity-card.teal .activity-number { color: var(--teal); }
+    .activity-card.green .activity-number { color: var(--forest-green); }
+
+    .activity-meta {
+      font-size: 8pt;
+      color: #888;
+      display: flex;
+      gap: 10px;
+    }
+
+    .activity-card h3 {
+      font-size: 12pt;
+      margin-bottom: 8px;
+      color: var(--deep-navy);
+    }
+
+    .activity-steps {
+      list-style: none;
+      counter-reset: step;
+      font-size: 9pt;
+    }
+
+    .activity-steps li {
+      counter-increment: step;
+      padding: 2px 0;
+      padding-left: 22px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .activity-steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 8pt;
+      color: var(--forest-green);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--light-sage);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 4px;
+    }
+
+    .activity-learning {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background-color: var(--warm-cream);
+      border-radius: 6px;
+      font-size: 8.5pt;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .activity-learning strong {
+      font-style: normal;
+      color: var(--deep-navy);
+    }
+
+    /* ================================================================
+       PAGE 6 — CONVERSATIONS + WHAT'S NEXT
+       ================================================================ */
+    .conversation-card {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+
+    .convo-number {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 12pt;
+      color: var(--soft-white);
+      flex-shrink: 0;
+    }
+
+    .conversation-card:nth-child(1) .convo-number { background-color: var(--warm-coral); }
+    .conversation-card:nth-child(2) .convo-number { background-color: var(--teal); }
+    .conversation-card:nth-child(3) .convo-number { background-color: var(--warm-gold); }
+
+    .convo-content h3 {
+      font-size: 10.5pt;
+      margin-bottom: 1px;
+    }
+
+    .convo-content .convo-label {
+      font-size: 7pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+
+    .conversation-card:nth-child(1) .convo-label { color: var(--warm-coral); }
+    .conversation-card:nth-child(2) .convo-label { color: var(--teal); }
+    .conversation-card:nth-child(3) .convo-label { color: var(--warm-gold); }
+
+    .convo-content p {
+      font-size: 8.5pt;
+      line-height: 1.55;
+    }
+
+    /* Programs table */
+    .programs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 9pt;
+    }
+
+    .programs-table th {
+      font-family: 'Poppins', sans-serif;
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--forest-green);
+      text-align: left;
+      padding: 6px 10px;
+      border-bottom: 2px solid var(--forest-green);
+    }
+
+    .programs-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .programs-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .track-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    .track-dot.gold { background-color: var(--warm-gold); }
+    .track-dot.coral { background-color: var(--warm-coral); }
+    .track-dot.teal { background-color: var(--teal); }
+
+    /* CTA box */
+    .cta-box {
+      background-color: var(--forest-green);
+      border-radius: 10px;
+      padding: 18px 24px;
+      text-align: center;
+      margin: 16px 0;
+    }
+
+    .cta-box h3 {
+      color: var(--soft-white);
+      font-size: 13pt;
+      margin-bottom: 6px;
+    }
+
+    .cta-box p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 9pt;
+      line-height: 1.55;
+    }
+
+    .cta-box a {
+      color: var(--warm-gold);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* Pillars row */
+    .pillars-row {
+      display: flex;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .pillar-mini {
+      flex: 1;
+      text-align: center;
+      padding: 10px 8px;
+      border-radius: 8px;
+      background-color: var(--warm-cream);
+    }
+
+    .pillar-mini-icon {
+      font-size: 16pt;
+      margin-bottom: 2px;
+    }
+
+    .pillar-mini h4 {
+      font-size: 7.5pt;
+      color: var(--deep-navy);
+    }
+
+    /* Final quote */
+    .final-quote {
+      text-align: center;
+      margin-top: 16px;
+      padding: 14px;
+      border-top: 2px solid var(--light-sage);
+      border-bottom: 2px solid var(--light-sage);
+    }
+
+    .final-quote p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11pt;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--deep-navy);
+      line-height: 1.45;
+    }
+
+    .final-quote .attribution {
+      font-family: 'Inter', sans-serif;
+      font-size: 8pt;
+      font-style: normal;
+      font-weight: 500;
+      color: var(--forest-green);
+      margin-top: 4px;
+    }
+
+    /* ================================================================
+       PRINT OVERRIDES
+       ================================================================ */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+
+      .page {
+        width: 8.5in;
+        height: 11in;
+        margin: 0;
+        padding: 0.6in 0.75in 0.45in;
+        box-shadow: none;
+        border-radius: 0;
+        page-break-after: always;
+        page-break-inside: avoid;
+        overflow: hidden;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      /* Force background colors to print */
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================
+       COVER PAGE
+       ================================================================ -->
+  <div class="page cover">
+    <div class="page-body">
+      <div class="cover-sparkle-row" aria-hidden="true">&#10022; &#10023; &#10022; &#10023; &#10022;</div>
+      <div class="cover-brand"><span class="sparkle">&#10022;</span> FutureSpark AI</div>
+      <h1>Your First AI<br>Family Weekend</h1>
+      <div class="subtitle">A Step-by-Step Starter Guide for Families</div>
+      <p class="tagline"><strong>4 hands-on AI activities</strong> you can do together this weekend. No coding required. No tech background needed. Just curiosity.</p>
+
+      <div class="cover-checklist">
+        <h3>Inside This Guide</h3>
+        <ul>
+          <li>A plain-language intro to AI</li>
+          <li>4 hands-on activities (one for every age group)</li>
+          <li>4 AI tools your family can start using today</li>
+          <li>The 3 most important AI conversations to have with your kids</li>
+          <li>Your next steps with FutureSpark AI</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cover-footer">
+      <a href="https://futuresparkai.org">futuresparkai.org</a> &nbsp;|&nbsp; futuresparkai@gmail.com &nbsp;|&nbsp; 2026
+    </div>
+  </div>
+
+  <!-- ================================================================
+       PAGE 2 — WELCOME LETTER + WHAT IS AI
+       ================================================================ -->
+  <div class="page">
+    <div class="page-body">
+      <div class="section-label">Welcome</div>
+      <h2 class="page-title">Dear Families,</h2>
+      <span class="page-title-accent"></span>
+
+      <div class="welcome-letter">
+        <p>If you're reading this, you're already ahead. Not because you know everything about AI — but because you're curious enough to start learning. That matters more than you think.</p>
+        <p>I created this guide because I've been exactly where you are. I'm a former K-12 teacher who has taught every grade level from kindergarten through high school. When I moved into the world of AI technology, something clicked: these tools are incredibly powerful, and almost nothing exists to help families navigate them together.</p>
+        <p>As a mom, I felt the same overwhelm you might be feeling right now. AI is everywhere, it's moving fast, and nobody gave us a roadmap.</p>
+        <p class="punchline">So I built one.</p>
+        <p>This guide is your first step. It's not a textbook. It's a weekend plan. By Sunday night, your family will have actually USED AI together — created something, learned something, and had the kind of conversations that matter.</p>
+        <p>Let's get started.</p>
+        <p class="signature">— Jessica, Founder of FutureSpark AI</p>
+      </div>
+
+      <div class="section-label">What Is AI?</div>
+      <h2 class="page-title" style="font-size: 14pt;">The Simple Explanation</h2>
+      <span class="page-title-accent"></span>
+
+      <div class="ai-callout">
+        AI is a computer program that learns from examples. You know how you get better at basketball the more you practice? AI works the same way — it looks at millions of examples and learns patterns. When you ask it a question or give it a task, it uses those patterns to give you an answer or create something new. It's not alive. It doesn't think like we do. But it's an incredibly powerful tool — like a supercharged calculator for words, images, and ideas.
+      </div>
+
+      <div class="ai-lists">
+        <div class="ai-list-col can">
+          <h4>What AI Can Do</h4>
+          <ul>
+            <li>Answer questions and explain topics</li>
+            <li>Write stories, emails, and summaries</li>
+            <li>Generate images from descriptions</li>
+            <li>Translate languages instantly</li>
+            <li>Help brainstorm and organize ideas</li>
+            <li>Analyze data and find patterns</li>
+          </ul>
+        </div>
+        <div class="ai-list-col cant">
+          <h4>What AI Can't Do</h4>
+          <ul>
+            <li>Truly understand or feel emotions</li>
+            <li>Always give accurate information</li>
+            <li>Replace human creativity and judgment</li>
+            <li>Know your family's unique values</li>
+            <li>Make ethical decisions on its own</li>
+            <li>Replace a great teacher or parent</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pull-quote">
+        "The goal isn't to compete with AI. It's to learn how to work WITH it — as a partner, a tool, and sometimes a sparring buddy for your ideas."
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="brand"><span class="sparkle">&#10022;</span> FutureSpark AI</span>
+      <span>futuresparkai.org</span>
+      <span>Page 2</span>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       PAGE 3 — 4 AI TOOLS
+       ================================================================ -->
+  <div class="page">
+    <div class="page-body">
+      <div class="section-label">Your Toolkit</div>
+      <h2 class="page-title">4 AI Tools Your Family Can Start Using Today</h2>
+      <span class="page-title-accent"></span>
+
+      <p style="font-size: 9pt; margin-bottom: 14px; color: #666;">All of these tools have free versions. Start here — no subscriptions needed.</p>
+
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <span class="tool-number">1</span>
+            <h3>ChatGPT</h3>
+          </div>
+          <div class="tool-meta">Conversational AI &middot; All ages with guidance</div>
+          <p>The most well-known AI tool. Great for answering questions, brainstorming ideas, helping with homework, and creative writing.</p>
+          <div class="tool-try">
+            <strong>Try this:</strong> Ask your kid to interview ChatGPT about their favorite topic. Then ask: "Was that accurate? How would we check?"
+          </div>
+          <span class="tool-link">chat.openai.com</span>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <span class="tool-number">2</span>
+            <h3>Claude</h3>
+          </div>
+          <div class="tool-meta">Thoughtful AI for projects &middot; Ages 10+</div>
+          <p>A thoughtful AI assistant great for research, longer projects, and careful analysis. It's what I used to build the FutureSpark AI website!</p>
+          <div class="tool-try">
+            <strong>Try this:</strong> Plan a "future invention" as a family. Describe the problem it solves, and let Claude help you think through the design.
+          </div>
+          <span class="tool-link">claude.ai</span>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <span class="tool-number">3</span>
+            <h3>Canva AI</h3>
+          </div>
+          <div class="tool-meta">Design + AI images &middot; All ages with parent guidance</div>
+          <p>A design tool with built-in AI that can generate images, create presentations, posters, and more. Visual, fun, and beginner-friendly.</p>
+          <div class="tool-try">
+            <strong>Try this:</strong> Each person describes their dream bedroom, world, or superhero and generates it with AI. Print it out and hang it up!
+          </div>
+          <span class="tool-link">canva.com</span>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-card-header">
+            <span class="tool-number">4</span>
+            <h3>NotebookLM</h3>
+          </div>
+          <div class="tool-meta">Research tool by Google &middot; Ages 12+</div>
+          <p>Upload articles, documents, or videos and get AI-powered summaries, audio overviews, and study guides. Great for research projects.</p>
+          <div class="tool-try">
+            <strong>Try this:</strong> Upload an article you're all interested in. Get a summary. Then quiz each other on what you learned.
+          </div>
+          <span class="tool-link">notebooklm.google.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="brand"><span class="sparkle">&#10022;</span> FutureSpark AI</span>
+      <span>futuresparkai.org</span>
+      <span>Page 3</span>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       PAGE 4 — ACTIVITIES 1 & 2
+       ================================================================ -->
+  <div class="page">
+    <div class="page-body">
+      <div class="section-label">Weekend Activities</div>
+      <h2 class="page-title">4 Hands-On AI Activities for Your Family</h2>
+      <span class="page-title-accent"></span>
+      <p style="font-size: 9pt; margin-bottom: 16px; color: #666;">Pick one, pick two, or do all four. Each one stands alone — no specific order needed.</p>
+
+      <div class="activity-card gold">
+        <div class="activity-header">
+          <span class="activity-number">Activity 1</span>
+          <div class="activity-meta">
+            <span>Ages 6-10</span>
+            <span>20-30 min</span>
+          </div>
+        </div>
+        <h3>"AI, Tell Me a Story"</h3>
+        <ol class="activity-steps">
+          <li>Open ChatGPT or Claude with your child</li>
+          <li>Together, pick a character, a setting, and a problem</li>
+          <li>Ask the AI to generate a short story with those elements</li>
+          <li>Read it together and ask: "What would YOU change?"</li>
+          <li>Have AI revise the story based on your child's ideas</li>
+          <li>Print it out or read it at bedtime</li>
+        </ol>
+        <div class="activity-learning">
+          <strong>Learning moment:</strong> "Did the AI write a good story? What was missing? What would YOU have done differently?"
+        </div>
+      </div>
+
+      <div class="activity-card coral">
+        <div class="activity-header">
+          <span class="activity-number">Activity 2</span>
+          <div class="activity-meta">
+            <span>Ages 8-14</span>
+            <span>30-45 min</span>
+          </div>
+        </div>
+        <h3>"Design Your Dream"</h3>
+        <ol class="activity-steps">
+          <li>Open Canva (free account)</li>
+          <li>Each person picks a dream project: a bedroom, vacation poster, invention ad, or restaurant menu</li>
+          <li>Use the AI image generator to create visuals for your project</li>
+          <li>Spend 15 minutes designing your project</li>
+          <li>Present your creation to each other</li>
+        </ol>
+        <div class="activity-learning">
+          <strong>Learning moment:</strong> "How did AI help you? What did YOU add that AI couldn't have done alone?"
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="brand"><span class="sparkle">&#10022;</span> FutureSpark AI</span>
+      <span>futuresparkai.org</span>
+      <span>Page 4</span>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       PAGE 5 — ACTIVITIES 3 & 4
+       ================================================================ -->
+  <div class="page">
+    <div class="page-body">
+      <div class="section-label">Weekend Activities (continued)</div>
+      <h2 class="page-title" style="font-size: 15pt;">Activities 3 & 4</h2>
+      <span class="page-title-accent"></span>
+
+      <div class="activity-card teal">
+        <div class="activity-header">
+          <span class="activity-number">Activity 3</span>
+          <div class="activity-meta">
+            <span>Ages 10-18</span>
+            <span>30-40 min</span>
+          </div>
+        </div>
+        <h3>"The AI Debate"</h3>
+        <ol class="activity-steps">
+          <li>Pick a fun debate topic: Should robots have rights? Would AI make a good president? Is AI art "real" art?</li>
+          <li>Split into two sides. Each side uses AI to research their position</li>
+          <li>Hold a 5-minute debate — each side presents their case</li>
+          <li>Discuss together: Did AI give balanced information? What was missing?</li>
+          <li>Bonus: Ask AI to judge who won — then decide if you agree!</li>
+        </ol>
+        <div class="activity-learning">
+          <strong>Learning moment:</strong> "AI sounds confident even when it's biased. How do we spot that?"
+        </div>
+      </div>
+
+      <div class="activity-card green">
+        <div class="activity-header">
+          <span class="activity-number">Activity 4</span>
+          <div class="activity-meta">
+            <span>All ages</span>
+            <span>30-45 min</span>
+          </div>
+        </div>
+        <h3>"Family Invention Lab"</h3>
+        <ol class="activity-steps">
+          <li>Everyone writes down one problem they wish someone would solve</li>
+          <li>Vote on the best problem to tackle</li>
+          <li>Ask AI to brainstorm invention ideas that could solve it</li>
+          <li>As a family, pick your favorite idea and give it a name and tagline</li>
+          <li>Create a 30-second "pitch" and present it — record it if you want!</li>
+        </ol>
+        <div class="activity-learning">
+          <strong>Learning moment:</strong> This activity captures the essence of what FutureSpark AI teaches — using AI as a creative partner to solve real problems.
+        </div>
+      </div>
+
+      <div class="pull-quote" style="margin-top: 16px;">
+        "Every one of these activities teaches something bigger than AI: collaboration, critical thinking, creativity, and the confidence to try something new."
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="brand"><span class="sparkle">&#10022;</span> FutureSpark AI</span>
+      <span>futuresparkai.org</span>
+      <span>Page 5</span>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       PAGE 6 — CONVERSATIONS + WHAT'S NEXT
+       ================================================================ -->
+  <div class="page">
+    <div class="page-body">
+      <div class="section-label">Essential Conversations</div>
+      <h2 class="page-title">3 AI Conversations Every Family Should Have</h2>
+      <span class="page-title-accent"></span>
+
+      <div class="conversation-card">
+        <span class="convo-number">1</span>
+        <div class="convo-content">
+          <div class="convo-label">Teaching AI Literacy</div>
+          <h3>"Is This True?"</h3>
+          <p>AI sounds confident even when it's wrong. Practice fact-checking together. Look something up, verify it with a second source, and talk about why that matters. This one skill will serve your kids forever.</p>
+        </div>
+      </div>
+
+      <div class="conversation-card">
+        <span class="convo-number">2</span>
+        <div class="convo-content">
+          <div class="convo-label">Understanding Ownership & Ethics</div>
+          <h3>"Who Made This?"</h3>
+          <p>When AI creates a poem, a picture, or a story — who's the author? Your kid? The AI? The people whose work the AI learned from? There's no single right answer, and that's exactly why it's worth discussing.</p>
+        </div>
+      </div>
+
+      <div class="conversation-card">
+        <span class="convo-number">3</span>
+        <div class="convo-content">
+          <div class="convo-label">Setting Boundaries</div>
+          <h3>"What Should AI NOT Do?"</h3>
+          <p>Talk about the things we should NOT let AI decide for us. Privacy, safety, fairness, who gets a job, who goes to jail. Help your kids understand that just because AI can do something doesn't mean it should.</p>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top: 20px;">What's Next</div>
+      <h2 class="page-title" style="font-size: 14pt;">Continue the Journey with FutureSpark AI</h2>
+      <span class="page-title-accent"></span>
+
+      <table class="programs-table">
+        <thead>
+          <tr>
+            <th>Track</th>
+            <th>Ages</th>
+            <th>Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="track-dot gold"></span>AI Explorers</td>
+            <td>Ages 6-10</td>
+            <td>Discovery & Wonder</td>
+          </tr>
+          <tr>
+            <td><span class="track-dot coral"></span>AI Creators</td>
+            <td>Ages 10-14</td>
+            <td>Hands-On Building</td>
+          </tr>
+          <tr>
+            <td><span class="track-dot teal"></span>AI Futures</td>
+            <td>Ages 14-18</td>
+            <td>Ethics, Careers & Advanced Projects</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cta-box">
+        <h3>Ready for the Next Step?</h3>
+        <p>Visit <a href="https://futuresparkai.org">futuresparkai.org</a> to join the waitlist, get founding family pricing, and connect with other families learning alongside you.</p>
+      </div>
+
+      <div class="pillars-row">
+        <div class="pillar-mini">
+          <div class="pillar-mini-icon">&#128161;</div>
+          <h4>AI Literacy</h4>
+        </div>
+        <div class="pillar-mini">
+          <div class="pillar-mini-icon">&#128736;</div>
+          <h4>Hands-On Building</h4>
+        </div>
+        <div class="pillar-mini">
+          <div class="pillar-mini-icon">&#128737;</div>
+          <h4>Ethics & Critical Thinking</h4>
+        </div>
+        <div class="pillar-mini">
+          <div class="pillar-mini-icon">&#128640;</div>
+          <h4>Future Readiness</h4>
+        </div>
+      </div>
+
+      <div class="final-quote">
+        <p>"The families who start learning now — together — are the ones who will thrive."</p>
+        <div class="attribution">— Jessica, Founder of FutureSpark AI</div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="brand"><span class="sparkle">&#10022;</span> FutureSpark AI</span>
+      <span>futuresparkai.org</span>
+      <span>Page 6</span>
+    </div>
+  </div>
+
+</body>
+</html>

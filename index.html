@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FutureSpark AI — Kids Learn to Build with AI | Free Resources for Families</title>
+  <meta name="description" content="Teacher-built AI programs for kids K-12. Hands-on courses, family workshops, and free resources. Start your family's AI journey today.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FutureSpark AI — Kids Learn to Build with AI | Free Resources for Families">
+  <meta property="og:description" content="Teacher-built AI programs for kids K-12. Hands-on courses, family workshops, and free resources. Start your family's AI journey today.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://futuresparkai.org">
+  <meta property="og:image" content="https://futuresparkai.org/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FutureSpark AI — Kids Learn to Build with AI">
+  <meta name="twitter:description" content="Teacher-built AI programs for kids K-12. Hands-on courses, family workshops, and free resources.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+
+  <!-- Kit (ConvertKit) -->
+  <script src="https://f.convertkit.com/ckjs/ck.5.js" async></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========== CSS CUSTOM PROPERTIES ========== */
+    :root {
+      --deep-navy: #1A1A2E;
+      --forest-green: #2D6A4F;
+      --warm-coral: #E07A5F;
+      --warm-gold: #D4A537;
+      --teal: #3D8487;
+      --warm-cream: #FAF3E8;
+      --soft-white: #FFFFFF;
+      --light-sage: #E8F0E8;
+      --body-text: #333333;
+      --light-gray: #F5F5F5;
+    }
+
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--body-text);
+      background-color: var(--warm-cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--deep-navy);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ========== UTILITY ========== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-padding {
+      padding: 90px 0;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: var(--forest-green);
+      color: var(--soft-white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 16px 32px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #256043;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(45, 106, 79, 0.3);
+    }
+
+    .btn-primary:focus {
+      outline: 3px solid var(--warm-gold);
+      outline-offset: 2px;
+    }
+
+    /* ========== SCROLL ANIMATIONS ========== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== NAVIGATION ========== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background-color: var(--soft-white);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      padding: 10px 0;
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: var(--deep-navy);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-brand .sparkle {
+      color: var(--warm-gold);
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--deep-navy);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--forest-green);
+    }
+
+    .nav-links a:focus {
+      outline: 2px solid var(--forest-green);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    .nav-cta {
+      background-color: var(--forest-green);
+      color: var(--soft-white) !important;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      background-color: #256043;
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+
+    .hamburger:focus {
+      outline: 2px solid var(--forest-green);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 3px;
+      background-color: var(--deep-navy);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--soft-white);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .mobile-menu a {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+      transition: color 0.2s ease;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--forest-green);
+    }
+
+    .mobile-menu .nav-cta {
+      margin-top: 8px;
+      font-size: 1.1rem;
+      padding: 14px 30px;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      background-color: var(--warm-cream);
+      padding-top: 140px;
+      padding-bottom: 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '✦';
+      position: absolute;
+      top: 120px;
+      left: 8%;
+      font-size: 1.4rem;
+      color: var(--warm-gold);
+      opacity: 0.3;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '✧';
+      position: absolute;
+      bottom: 60px;
+      right: 10%;
+      font-size: 1.8rem;
+      color: var(--warm-coral);
+      opacity: 0.25;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin-bottom: 24px;
+    }
+
+    .hero h1 .highlight {
+      color: var(--warm-coral);
+    }
+
+    .hero-sub {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      font-size: 1.12rem;
+      color: var(--body-text);
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-secondary {
+      color: var(--teal);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .hero-secondary:hover {
+      color: #2d6b6e;
+      text-decoration: underline;
+    }
+
+    /* ========== PROBLEM SECTION ========== */
+    .problem-section {
+      background-color: var(--soft-white);
+    }
+
+    .problem-section h2 {
+      margin-bottom: 56px;
+    }
+
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .problem-card {
+      background-color: var(--light-sage);
+      border-radius: 12px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .problem-card {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .problem-card .card-icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .problem-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .problem-card p {
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+
+    /* ========== PROGRAMS SECTION ========== */
+    .programs-section {
+      background-color: var(--warm-cream);
+    }
+
+    .programs-section h2 {
+      margin-bottom: 56px;
+    }
+
+    .program-card {
+      background-color: var(--soft-white);
+      border-radius: 12px;
+      padding: 36px 28px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .program-card.gold::before { background-color: var(--warm-gold); }
+    .program-card.coral::before { background-color: var(--warm-coral); }
+    .program-card.teal::before { background-color: var(--teal); }
+
+    .program-card {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .program-badge {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .program-card.gold .program-badge {
+      background-color: rgba(212, 165, 55, 0.15);
+      color: #a67f1a;
+    }
+
+    .program-card.coral .program-badge {
+      background-color: rgba(224, 122, 95, 0.15);
+      color: #b85d41;
+    }
+
+    .program-card.teal .program-badge {
+      background-color: rgba(61, 132, 135, 0.15);
+      color: #2d6b6e;
+    }
+
+    .program-card .tagline {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--deep-navy);
+      margin-bottom: 12px;
+    }
+
+    .program-card .description {
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+    }
+
+    .program-card .topics {
+      font-size: 0.88rem;
+      color: #666;
+      padding-top: 16px;
+      border-top: 1px solid #eee;
+    }
+
+    .programs-cta {
+      margin-top: 48px;
+      font-size: 1.05rem;
+      color: var(--body-text);
+    }
+
+    .programs-cta a {
+      color: var(--forest-green);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: rgba(45, 106, 79, 0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s ease;
+    }
+
+    .programs-cta a:hover {
+      text-decoration-color: var(--forest-green);
+    }
+
+    /* ========== PILLARS SECTION ========== */
+    .pillars-section {
+      background-color: var(--soft-white);
+    }
+
+    .pillars-section h2 {
+      margin-bottom: 56px;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .pillar-card {
+      text-align: center;
+      padding: 40px 28px;
+      border-radius: 12px;
+      background-color: var(--warm-cream);
+      transition: transform 0.2s ease;
+    }
+
+    .pillar-card {
+      box-shadow: none;
+    }
+
+    .pillar-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .pillar-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .pillar-icon.gold { background-color: rgba(212, 165, 55, 0.15); }
+    .pillar-icon.coral { background-color: rgba(224, 122, 95, 0.15); }
+    .pillar-icon.teal { background-color: rgba(61, 132, 135, 0.15); }
+    .pillar-icon.green { background-color: rgba(45, 106, 79, 0.15); }
+
+    .pillar-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .pillar-card p {
+      font-size: 0.98rem;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    /* ========== FOUNDER SECTION ========== */
+    .founder-section {
+      background-color: var(--warm-cream);
+    }
+
+    .founder-section h2 {
+      margin-bottom: 48px;
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .founder-photo {
+      width: 280px;
+      height: 280px;
+      border-radius: 16px;
+      background-color: var(--light-sage);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      color: #666;
+      font-size: 0.95rem;
+      margin: 0 auto;
+    }
+
+    .founder-bio p {
+      margin-bottom: 18px;
+      font-size: 1.02rem;
+    }
+
+    .founder-bio .punchline {
+      font-size: 1.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--warm-coral);
+      margin: 28px 0;
+    }
+
+    /* ========== STATS SECTION ========== */
+    .stats-section {
+      background-color: var(--light-sage);
+    }
+
+    .stats-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .stats-note {
+      margin-bottom: 48px;
+      font-style: italic;
+      color: #666;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .stat-card {
+      background-color: var(--soft-white);
+      border-radius: 12px;
+      padding: 40px 24px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .stat-card {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .stat-card:nth-child(1) .stat-number { color: var(--warm-coral); }
+    .stat-card:nth-child(2) .stat-number { color: var(--forest-green); }
+    .stat-card:nth-child(3) .stat-number { color: var(--warm-coral); }
+
+    .stat-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ========== FAQ SECTION ========== */
+    .faq-section {
+      background-color: var(--soft-white);
+    }
+
+    .faq-section h2 {
+      margin-bottom: 48px;
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+      line-height: 1.4;
+      gap: 16px;
+    }
+
+    .faq-question:focus {
+      outline: 2px solid var(--forest-green);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: var(--light-sage);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--forest-green);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+      background-color: var(--forest-green);
+      color: var(--soft-white);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 0 22px;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--body-text);
+    }
+
+    /* ========== FINAL CTA ========== */
+    .final-cta {
+      background-color: var(--forest-green);
+      padding: 80px 0;
+    }
+
+    .final-cta h2 {
+      color: var(--soft-white);
+      margin-bottom: 16px;
+    }
+
+    .final-cta p {
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin: 0 auto 36px;
+      font-size: 1.05rem;
+    }
+
+    /* Kit form overrides to match FutureSpark design */
+    .final-cta .formkit-form {
+      max-width: 540px !important;
+      margin: 0 auto;
+    }
+
+    .final-cta .formkit-form [data-style="clean"] {
+      padding: 0 !important;
+    }
+
+    .final-cta .formkit-fields {
+      display: flex !important;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .final-cta .formkit-field {
+      flex: 1 1 240px !important;
+      margin: 0 !important;
+    }
+
+    .final-cta .formkit-input {
+      padding: 14px 20px !important;
+      border: 2px solid rgba(255, 255, 255, 0.3) !important;
+      border-radius: 8px !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 1rem !important;
+      background-color: var(--soft-white) !important;
+      color: var(--body-text) !important;
+      height: auto !important;
+    }
+
+    .final-cta .formkit-input:focus {
+      border-color: var(--warm-gold) !important;
+      outline: none;
+    }
+
+    .final-cta .formkit-input::placeholder {
+      color: #999 !important;
+      opacity: 1 !important;
+    }
+
+    .final-cta .formkit-submit {
+      margin: 0 !important;
+      flex: 0 0 auto !important;
+      border-radius: 8px !important;
+      background-color: var(--warm-coral) !important;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .final-cta .formkit-submit:hover {
+      background-color: #c96a4f !important;
+      transform: translateY(-2px);
+    }
+
+    .final-cta .formkit-submit > span {
+      padding: 14px 28px !important;
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 600 !important;
+      font-size: 1rem !important;
+    }
+
+    .final-cta .formkit-powered-by-convertkit-container {
+      margin-top: 12px !important;
+    }
+
+    .final-cta .formkit-powered-by-convertkit {
+      opacity: 0.5;
+    }
+
+    .final-cta .formkit-alert-success {
+      background: rgba(255, 255, 255, 0.15) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: var(--soft-white) !important;
+      border-radius: 8px !important;
+    }
+
+    .final-cta .formkit-alert-error {
+      border-radius: 8px !important;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background-color: var(--deep-navy);
+      padding: 40px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-left {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.88rem;
+    }
+
+    .footer-center {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-center a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-center a:hover {
+      color: var(--soft-white);
+    }
+
+    .footer-center svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .footer-email {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.88rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-email:hover {
+      color: var(--soft-white);
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-right a {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.84rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-right a:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .founder-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .founder-photo {
+        margin: 0 auto;
+      }
+
+      .founder-bio .punchline {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-padding {
+        padding: 56px 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero {
+        padding-top: 110px;
+        padding-bottom: 60px;
+      }
+
+      .cards-row,
+      .stats-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .pillars-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .final-cta {
+        padding: 56px 0;
+      }
+
+      .final-cta .formkit-fields {
+        flex-direction: column !important;
+      }
+
+      .final-cta .formkit-field {
+        flex: 1 1 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="#" class="nav-brand" aria-label="FutureSpark AI Home">
+        <span class="sparkle">✦</span> FutureSpark AI
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Get Free Guide</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <a href="#about">About</a>
+    <a href="#programs">Programs</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Get Free Guide</a>
+  </div>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content fade-in">
+          <h1>A Teacher-Built Program Where Kids Don't Just Learn About AI — They <span class="highlight">Build With It</span></h1>
+          <p class="hero-sub">Hands-on AI courses for kids grades K–12 — designed by a former classroom teacher and mom who believes every family deserves to understand the technology shaping their future.</p>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn-primary">Download Your Free AI Starter Guide →</a>
+            <a href="#contact" class="hero-secondary">Join the waitlist for upcoming workshops</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROBLEM SECTION ========== -->
+    <section class="problem-section section-padding" id="about">
+      <div class="container text-center">
+        <h2 class="fade-in">AI Is Already Here. Is Your Family Ready?</h2>
+        <div class="cards-row">
+          <div class="problem-card fade-in">
+            <span class="card-icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="20" stroke="#E07A5F" stroke-width="2.5" fill="none"/><path d="M16 30c2-4 6-6 8-6s6 2 8 6" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M12 20l6-4 6 4 6-4 6 4" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+            </span>
+            <h3>The Reality</h3>
+            <p>AI is transforming every industry, and your kids will work alongside it — whether they're ready or not. Schools are scrambling to figure out policies, but most aren't teaching kids to actually use AI.</p>
+          </div>
+          <div class="problem-card fade-in">
+            <span class="card-icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 14h8v8h-8zM26 26h8v8h-8z" stroke="#3D8487" stroke-width="2.5" fill="none" stroke-linejoin="round"/><path d="M22 18h4l-4 8h4" stroke="#3D8487" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </span>
+            <h3>The Gap</h3>
+            <p>There's endless information about AI online, but almost nothing designed to help families learn together. Parents feel overwhelmed. Kids are curious but unsupervised. The gap is growing every day.</p>
+          </div>
+          <div class="problem-card fade-in">
+            <span class="card-icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 8l3 8h8l-6.5 5 2.5 8L24 23.5 17 29l2.5-8L13 16h8l3-8z" stroke="#D4A537" stroke-width="2.5" fill="none" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>The Opportunity</h3>
+            <p>Kids who learn to build with AI now won't just be prepared for the future — they'll be creating it. FutureSpark AI bridges the gap with hands-on, age-appropriate programs led by a real teacher who gets it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROGRAMS SECTION ========== -->
+    <section class="programs-section section-padding" id="programs">
+      <div class="container text-center">
+        <h2 class="fade-in">Three Tracks. Every Age. Real Skills.</h2>
+        <div class="cards-row">
+          <div class="program-card gold fade-in">
+            <span class="program-badge">Ages 6–10 · Grades K–5</span>
+            <div class="tagline">AI Explorers</div>
+            <p class="description">Young learners explore what AI is through play, stories, and hands-on activities. They learn to ask great questions and think critically about the technology around them.</p>
+            <div class="topics">What is AI? · Fun AI experiments · Creative projects with kid-friendly tools · Thinking like an inventor</div>
+          </div>
+          <div class="program-card coral fade-in">
+            <span class="program-badge">Ages 10–14 · Grades 6–8</span>
+            <div class="tagline">AI Creators</div>
+            <p class="description">Middle schoolers go beyond understanding into creating. They use real AI tools to build projects, solve problems, and express themselves — while learning responsible use.</p>
+            <div class="topics">Build real projects · Prompt engineering · Ethics and digital citizenship · Team challenges and hackathons</div>
+          </div>
+          <div class="program-card teal fade-in">
+            <span class="program-badge">Ages 14–18 · Grades 9–12</span>
+            <div class="tagline">AI Futures</div>
+            <p class="description">High schoolers dive deep into how AI is reshaping industries, careers, and society. They build portfolio-worthy projects and develop the critical thinking skills employers want.</p>
+            <div class="topics">Advanced AI projects · Career exploration · Bias, fairness, and societal impact · Portfolio building</div>
+          </div>
+        </div>
+        <p class="programs-cta fade-in">Not sure which track? <a href="#contact">Download our free guide</a> to find the right fit for your family.</p>
+      </div>
+    </section>
+
+    <!-- ========== PILLARS SECTION ========== -->
+    <section class="pillars-section section-padding">
+      <div class="container text-center">
+        <h2 class="fade-in">Every Program. Four Pillars. One Mission.</h2>
+        <div class="pillars-grid">
+          <div class="pillar-card fade-in">
+            <div class="pillar-icon gold" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#D4A537" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M12 2v1M12 21v-6a4 4 0 0 0-4-4H3M12 21v-6a4 4 0 0 1 4-4h5"/><circle cx="12" cy="5" r="3"/></svg>
+            </div>
+            <h3>AI Literacy</h3>
+            <p>Understanding what AI is, how it works, and what it can (and can't) do.</p>
+          </div>
+          <div class="pillar-card fade-in">
+            <div class="pillar-icon coral" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h3>Hands-On Building</h3>
+            <p>Creating real things with real AI tools — not just watching videos.</p>
+          </div>
+          <div class="pillar-card fade-in">
+            <div class="pillar-icon teal" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3D8487" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Ethics & Critical Thinking</h3>
+            <p>Responsible use, recognizing bias, protecting privacy, thinking deeply.</p>
+          </div>
+          <div class="pillar-card fade-in">
+            <div class="pillar-icon green" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+            </div>
+            <h3>Future Readiness</h3>
+            <p>Career awareness, adaptability, and the confidence to thrive in an AI-shaped world.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOUNDER SECTION ========== -->
+    <section class="founder-section section-padding">
+      <div class="container">
+        <h2 class="text-center fade-in">Hi, I'm Jessica — Teacher, Mom, and Your Family's AI Guide</h2>
+        <div class="founder-grid fade-in">
+          <div class="founder-photo" aria-label="Photo of Jessica, founder of FutureSpark AI">
+            Photo Coming Soon
+          </div>
+          <div class="founder-bio">
+            <p>I've spent my career in classrooms — from teaching high school math as an English major (talk about learning on the fly!) to coaching students through learning gaps, teaching life skills to third and fourth graders, and spending two wonderful years as a kindergarten teacher.</p>
+            <p>I've worked with every age group from ages 5 to 18, and I've seen firsthand how kids learn best: by doing.</p>
+            <p>When I moved into school administration and then into the world of AI technology, something clicked. I saw how powerful these tools are — and how few resources exist to help families navigate them together.</p>
+            <p>As a mom, I felt the same overwhelm every parent feels: AI is everywhere, it's moving fast, and nobody is giving us a roadmap.</p>
+            <p class="punchline">So I built one.</p>
+            <p>FutureSpark AI isn't just another tech company teaching kids to code. It's a teacher-built, family-centered program where kids learn to create with AI — ethically, confidently, and with the guidance of someone who has spent years learning how children actually learn.</p>
+            <p>I'm still learning too. Every day. And I believe that's exactly the point. The families who start learning now — together — are the ones who will thrive.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== STATS SECTION ========== -->
+    <section class="stats-section section-padding">
+      <div class="container text-center">
+        <h2 class="fade-in">What Families Are Saying</h2>
+        <p class="stats-note fade-in">Our first cohort launches soon — check back for stories from real families!</p>
+        <div class="stats-grid">
+          <div class="stat-card fade-in">
+            <div class="stat-number">K–12</div>
+            <p>Grade levels covered across three learning tracks</p>
+          </div>
+          <div class="stat-card fade-in">
+            <div class="stat-number">4 Pillars</div>
+            <p>Every program built on AI Literacy, Building, Ethics, and Future Readiness</p>
+          </div>
+          <div class="stat-card fade-in">
+            <div class="stat-number">100%</div>
+            <p>Hands-on — every student builds real projects, not just takes notes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section class="faq-section section-padding" id="faq">
+      <div class="container text-center">
+        <h2 class="fade-in">Questions? We've Got Answers.</h2>
+        <div class="faq-list fade-in">
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Does my child need to know how to code?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">Not at all! Our programs are designed for complete beginners. We meet kids where they are and build from there. The goal is creative exploration with AI, not coding boot camp.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Is this safe for kids? What about AI ethics?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">Safety and ethics are baked into everything we do — it's one of our four core pillars. We teach kids to think critically about AI, understand bias, protect their privacy, and use these tools responsibly.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What age is this appropriate for?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">We have three tracks designed for different developmental stages: AI Explorers (ages 6–10), AI Creators (ages 10–14), and AI Futures (ages 14–18). There's a right fit for every kid.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What makes this different from other AI programs?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">Most programs teach kids ABOUT AI as a concept. We teach kids to BUILD with AI as a creative tool. Plus, our founder is a former K-12 teacher — not a tech company. That means everything is designed around how kids actually learn.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Can parents participate too?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">Absolutely! We believe AI literacy is a family journey. We offer parent workshops and our programs are designed so families can explore and create together.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What does "hands-on" actually mean?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">It means your child will use real AI tools to create real projects — things like building a story with AI illustrations, creating a chatbot, or designing an app concept. They walk away with something they made, not just notes from a lecture.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>How much does it cost?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">We offer free introductory resources (like our AI Starter Guide) and free workshops to help families get started. Paid courses and Hack Week events are coming soon — join the waitlist to get early access and founding family pricing.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FINAL CTA ========== -->
+    <section class="final-cta" id="contact">
+      <div class="container text-center">
+        <h2 class="fade-in">Your Family's AI Journey Starts Here</h2>
+        <p class="fade-in">Download our free AI Starter Guide for Families — and be the first to know when workshops and courses launch.</p>
+        <div class="fade-in">
+          <form action="https://app.kit.com/forms/9067377/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9067377" data-uid="797fdb2b14" data-format="inline" data-version="5" data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"Welcome to FutureSpark AI! Check your email to confirm and get your free guide. Don\u0027t see it? Check your spam or promotions folder!","redirect_url":""},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":true,"url":"https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}' min-width="400 500 600 700 800">
+            <div data-style="clean">
+              <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+              <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+                <div class="formkit-field">
+                  <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Enter your email address" required type="email">
+                </div>
+                <button data-element="submit" class="formkit-submit formkit-submit">
+                  <div class="formkit-spinner"><div></div><div></div><div></div></div>
+                  <span>Get My Free Guide</span>
+                </button>
+              </div>
+              <div class="formkit-powered-by-convertkit-container">
+                <a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="light" target="_blank" rel="nofollow">Built with Kit</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">© 2026 FutureSpark AI. All rights reserved.</div>
+        <div class="footer-center">
+          <!-- YouTube -->
+          <a href="https://youtube.com/@futuresparkai" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <!-- TikTok -->
+          <a href="https://tiktok.com/@futuresparkai" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15.2a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V9.05a8.27 8.27 0 0 0 4.85 1.56V7.16a4.83 4.83 0 0 1-1.09-.47z"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:futuresparkai@gmail.com" class="footer-email">futuresparkai@gmail.com</a>
+        </div>
+        <div class="footer-right">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ========== STICKY NAVBAR ==========
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // ========== MOBILE MENU ==========
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', !isOpen);
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ========== FAQ ACCORDION ==========
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      const inner = item.querySelector('.faq-answer-inner');
+
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+        // Close all
+        faqItems.forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          i.querySelector('.faq-answer').style.maxHeight = '0';
+        });
+
+        // Open clicked if it was closed
+        if (!isActive) {
+          item.classList.add('active');
+          question.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = inner.scrollHeight + 24 + 'px';
+        }
+      });
+    });
+
+    // ========== SCROLL ANIMATIONS (IntersectionObserver) ==========
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    fadeElements.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
