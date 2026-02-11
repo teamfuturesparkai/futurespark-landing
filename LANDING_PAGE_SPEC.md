@@ -151,7 +151,7 @@ Three Tracks. Every Age. Real Skills.
 **Three program cards (equal width, stack on mobile):**
 
 **Track 1 — AI Explorers**
-- Badge/label: "Ages 6–10 · Grades K–5"
+- Badge/label: "Ages 5–10 · Grades K–5"
 - Tagline: "Discovery & Wonder"
 - Description: "Young learners explore what AI is through play, stories, and hands-on activities. They learn to ask great questions and think critically about the technology around them."
 - Topics: "What is AI? · Fun AI experiments · Creative projects with kid-friendly tools · Thinking like an inventor"
@@ -288,7 +288,7 @@ A: Not at all! Our programs are designed for complete beginners. We meet kids wh
 A: Safety and ethics are baked into everything we do — it's one of our four core pillars. We teach kids to think critically about AI, understand bias, protect their privacy, and use these tools responsibly.
 
 **Q3: What age is this appropriate for?**
-A: We have three tracks designed for different developmental stages: AI Explorers (ages 6–10), AI Creators (ages 10–14), and AI Futures (ages 14–18). There's a right fit for every kid.
+A: We have three tracks designed for different developmental stages: AI Explorers (ages 5–10), AI Creators (ages 10–14), and AI Futures (ages 14–18). There's a right fit for every kid.
 
 **Q4: What makes this different from other AI programs?**
 A: Most programs teach kids ABOUT AI as a concept. We teach kids to BUILD with AI as a creative tool. Plus, our founder is a former K-12 teacher — not a tech company. That means everything is designed around how kids actually learn.
